@@ -1,5 +1,16 @@
+<% if flash[:notice] %>
+   <p id="notice">
+     <%= flash[:notice] %>
+   </p>
+<% end %>
+
 <%= form_for @book do |f| %>
+    <%= render 'layouts/error_messages', model: f.object %>
     <%= f.text_field :title, :placeholder =>"#{@book.title}" %>
     <%= f.text_area :body, :placeholder =>"#{@book.body}" %>
     <%= f.submit "Update Book" %>
 <% end %>
+
+<%= link_to "show", @book %>
+<%= link_to "Back", books_path %>
+
